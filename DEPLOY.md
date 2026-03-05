@@ -3,8 +3,8 @@
 ## Vercel (Web)
 
 1. Подключите репозиторий https://github.com/sacraltrack25-wq/omega к Vercel.
-2. **Root Directory:** `apps/web` (обязательно — Next.js в подпапке).
-3. Framework: Next.js (auto-detect из apps/web/package.json).
+2. **Root Directory:** оставьте пустым (корень репо).
+3. Framework: Next.js (next добавлен в корневой package.json для детекции).
 4. Environment Variables:
    - `NEXT_PUBLIC_SUPABASE_URL` — URL Supabase
    - `NEXT_PUBLIC_SUPABASE_ANON_KEY` — anon key
