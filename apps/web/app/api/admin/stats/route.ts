@@ -36,6 +36,9 @@ export async function GET() {
     supabase.from("omega_queries")
       .select("*", { count: "exact", head: true })
       .eq("recall_used", true),
+    supabase.from("omega_queries")
+      .select("*", { count: "exact", head: true })
+      .eq("multimodal", true),
     supabase.from("harvester_jobs")
       .select("*", { count: "exact", head: true })
       .eq("status", "running"),
