@@ -1,0 +1,43 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+.turbo/
+
+# Next.js
+apps/web/.next/
+apps/web/out/
+
+# Build output
+core/dist/
+**/__pycache__/
+*.pyc
+
+# Environment — NEVER commit these
+.env
+.env.local
+.env.*.local
+apps/web/.env.local
+core/.env
+services/harvesters/.env
+
+# Deploy output (separate repos; omega uses root Dockerfile)
+deploy/omega-ai-engine/
+deploy/omega-harvesters/
+
+# RunPod / SSH keys — NEVER commit
+runpod/ssh_key.pub
+runpod/*.pem
+runpod/*.key
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/settings.json
+.idea/

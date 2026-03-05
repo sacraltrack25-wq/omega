@@ -1,0 +1,28 @@
+{
+  "name": "omega-ai",
+  "version": "1.0.0",
+  "private": true,
+  "description": "OMEGA Mirror AI System — gX · Li · Ω Architecture",
+  "scripts": {
+    "dev": "turbo run dev",
+    "dev:all": "pnpm run-p dev harvesters:dev",
+    "harvesters:dev": "cd services/harvesters && uvicorn main:app --port 8000 --reload",
+    "start:all": "powershell -ExecutionPolicy Bypass -File ./scripts/start-all.ps1",
+    "stop:all": "powershell -ExecutionPolicy Bypass -File ./scripts/stop-all.ps1",
+    "train:all": "powershell -ExecutionPolicy Bypass -File ./scripts/train-all.ps1",
+    "save-and-restart": "powershell -ExecutionPolicy Bypass -File ./scripts/save-and-restart.ps1",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "type-check": "turbo run type-check",
+    "clean": "turbo run clean"
+  },
+  "devDependencies": {
+    "turbo": "^2.0.0",
+    "typescript": "^5.4.5"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "packageManager": "pnpm@9.1.0"
+}

@@ -1,0 +1,138 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base ─────────────────────────────────────────────────────────────────── */
+@layer base {
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+
+  html {
+    @apply bg-bg-primary text-text-primary;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-bg-primary text-text-primary font-sans;
+    min-height: 100vh;
+  }
+
+  ::-webkit-scrollbar         { width: 4px; height: 4px; }
+  ::-webkit-scrollbar-track   { background: transparent; }
+  ::-webkit-scrollbar-thumb   { background: #333; border-radius: 99px; }
+  ::-webkit-scrollbar-thumb:hover { background: #555; }
+
+  ::selection { background: rgba(124,106,247,0.25); }
+}
+
+/* ── Components ───────────────────────────────────────────────────────────── */
+@layer components {
+
+  /* Card */
+  .omega-card {
+    @apply bg-bg-card border border-border rounded-xl shadow-card transition-all duration-200;
+  }
+  .omega-card:hover {
+    @apply border-border-bright shadow-card-hover;
+  }
+
+  /* Button variants */
+  .btn-primary {
+    @apply bg-accent hover:bg-accent-hover text-white font-medium px-4 py-2 rounded-lg
+           transition-all duration-150 active:scale-[0.98] shadow-glow-sm hover:shadow-glow-md;
+  }
+  .btn-ghost {
+    @apply bg-transparent hover:bg-bg-hover text-text-secondary hover:text-text-primary
+           font-medium px-4 py-2 rounded-lg transition-all duration-150;
+  }
+  .btn-outline {
+    @apply border border-border hover:border-border-bright bg-transparent text-text-secondary
+           hover:text-text-primary font-medium px-4 py-2 rounded-lg transition-all duration-150;
+  }
+
+  /* Input */
+  .omega-input {
+    @apply bg-bg-secondary border border-border rounded-lg px-3 py-2 text-text-primary
+           placeholder-text-muted focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent/30
+           transition-all duration-150 w-full;
+  }
+
+  /* Badge */
+  .badge {
+    @apply inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-xs font-medium;
+  }
+  .badge-accent  { @apply bg-accent/10 text-accent border border-accent/20; }
+  .badge-success { @apply bg-success/10 text-success border border-success/20; }
+  .badge-warning { @apply bg-warning/10 text-warning border border-warning/20; }
+  .badge-danger  { @apply bg-danger/10  text-danger  border border-danger/20; }
+  .badge-muted   { @apply bg-bg-hover  text-text-secondary border border-border; }
+
+  /* Nav link */
+  .nav-link {
+    @apply flex items-center gap-3 px-3 py-2 rounded-lg text-text-secondary
+           hover:text-text-primary hover:bg-bg-hover transition-all duration-150 text-sm font-medium;
+  }
+  .nav-link.active {
+    @apply text-text-primary bg-accent-muted border border-accent/20;
+  }
+
+  /* Mirror glow decoration */
+  .mirror-glow {
+    background: radial-gradient(ellipse at center, rgba(124,106,247,0.1) 0%, transparent 70%);
+  }
+
+  /* Neuron dot */
+  .neuron-dot {
+    @apply w-1.5 h-1.5 rounded-full;
+    animation: neuronPulse 2s ease-in-out infinite;
+  }
+
+  /* Omega spinner */
+  .omega-spinner {
+    @apply w-4 h-4 border-2 border-text-muted border-t-accent rounded-full;
+    animation: spin 0.8s linear infinite;
+  }
+
+  /* Progress bar indeterminate */
+  .progress-indeterminate {
+    @apply h-1.5 rounded-full overflow-hidden bg-bg-hover;
+  }
+  .progress-indeterminate > div {
+    @apply h-full rounded-full bg-accent;
+    animation: progressIndeterminate 1.5s ease-in-out infinite;
+  }
+}
+
+/* ── Utilities ────────────────────────────────────────────────────────────── */
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(135deg, #f0f0f0 0%, #7c6af7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .border-gradient {
+    border-image: linear-gradient(135deg, rgba(124,106,247,0.5), transparent) 1;
+  }
+  .grid-bg {
+    background-image: radial-gradient(circle, #1e1e1e 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+}
+
+/* ── Keyframes ────────────────────────────────────────────────────────────── */
+@keyframes spin         { to { transform: rotate(360deg); } }
+@keyframes neuronPulse  {
+  0%, 100% { opacity: 0.4; transform: scale(0.9); }
+  50%      { opacity: 1;   transform: scale(1.1); }
+}
+@keyframes progressIndeterminate {
+  0%   { width: 20%; margin-left: 0; }
+  50%  { width: 40%; margin-left: 40%; }
+  100% { width: 20%; margin-left: 80%; }
+}
