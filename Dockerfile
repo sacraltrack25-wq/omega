@@ -7,8 +7,11 @@ COPY core/package.json core/tsconfig.json ./
 COPY core/src ./src
 RUN npm install && npm run build
 
-FROM python:3.11-slim
-RUN apt-get update && apt-get install -y ffmpeg && apt-get clean && rm -rf /var/lib/apt/lists/*
+# Base: Node (has node) + Python + ffmpeg
+FROM node:20-bookworm-slim
+RUN apt-get update && apt-get install -y python3 python3-pip python3-venv ffmpeg && \
+    apt-get clean && rm -rf /var/lib/apt/lists/* && \
+    ln -sf python3 /usr/bin/python && ln -sf pip3 /usr/bin/pip
 
 WORKDIR /app
 COPY services/harvesters/requirements.txt ./harvesters/
